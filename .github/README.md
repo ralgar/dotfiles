@@ -12,14 +12,12 @@ A collection of my personal dotfiles for customizing *nix systems.
 
 These dotfiles are aimed at power users, with a heavy focus on working in the terminal.
 
-Some key features:
+**Some key features:**
 * Intuitive, keyboard-driven window manager, with many useful widgets.
 * Highly customized shell, including informative prompt and completions.
 * Highly customized text editor, which strives to be IDE-like.
 * Cohesive look and feel. All major elements use the same color scheme.
 * Cleans up many of the scattered dotfiles in `$HOME`.
-
-And much more!
 
 This repository is managed by [YADM (Yet Another Dotfiles Manager)](https://yadm.io), which is a Git wrapper for managing dotfiles.
 
@@ -34,7 +32,6 @@ This repo contains dotfiles for the following projects:
 * `ncmpcpp`
 * `neofetch`
 * `tmux`
-* `ttf-meslo-nerd-font-powerlevel10k`
 * `vim`
 * `xorg`
 * `yadm`
@@ -51,7 +48,7 @@ Simply install the [Prerequisites](#prerequisites), and follow the [Installation
 
 The only prerequisite is `yadm` (and its implicit `git`, of course).
 
-**Note:** If you're not using an Arch-based system, you will need to install `ansible` as well.
+**Note:** If you're *not* using an Arch-based system, you will need to install `ansible` as well.
 
 ### Installation
 
