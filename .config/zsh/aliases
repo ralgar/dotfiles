@@ -1,0 +1,24 @@
+###########################
+###   COMMAND ALIASES   ###
+###########################
+
+# sudo fix for aliases
+alias sudo='sudo '
+
+# SSH $TERM fix
+alias ssh='ssh -o StrictHostKeyChecking=no'
+
+# mv and cp edge cases
+alias mv='mv --strip-trailing-slashes'
+alias cp='cp --strip-trailing-slashes'
+
+# dd
+alias dd='dd bs=1M status=progress'
+
+# Color output
+alias ls='ls --color -F --group-directories-first'
+alias la='ls -lah --color --group-directories-first'
+alias ll='ls -lh --color --group-directories-first'
+alias diff='diff --color=auto'
+alias grep='grep --color=auto'
+alias ip='ip -color=auto'

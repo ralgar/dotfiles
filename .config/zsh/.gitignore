@@ -1,0 +1,9 @@
+######################
+###   GIT IGNORE   ###
+######################
+
+# zsh ignores
+.histfile
+.zcompdump
+.zinit/
+plugins/
