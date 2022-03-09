@@ -1,0 +1,12 @@
+#############################################
+###   PLAYBOOK - CONFIGURE LOCAL SYSTEM   ###
+#############################################
+---
+- name: Configure Local System
+  hosts: localhost
+  become: no
+  roles:
+    - mpd
+    - ssh-client
+    - vim
+    - zsh

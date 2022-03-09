@@ -1,0 +1,16 @@
+---
+- name: Ensure zsh package is installed
+  package:
+    name: zsh
+    state: present
+  become: yes
+
+- name: Get path of zsh
+  command: which zsh
+  register: zsh_path
+  changed_when: false
+
+- name: Ensure user shell is set to zsh
+  user:
+    name: "{{ ansible_user_id }}"
+    shell: "{{ zsh_path.stdout }}"

@@ -1,0 +1,11 @@
+---
+# NOTE: These package names are correct for Arch Linux,
+#       other distros may require adjustment.
+- name: Make sure linter packages are installed
+  package:
+    name:
+      - ansible-lint
+      - shellcheck
+      - yamllint
+    state: present
+  become: yes

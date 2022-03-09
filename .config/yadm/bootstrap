@@ -1,0 +1,26 @@
+#!/bin/bash
+
+
+# Source the new environment
+source "$HOME/.zshenv"
+
+# Install Ansible package if needed
+if ! which ansible &> /dev/null ; then
+    printf "\nInstalling Ansible...\n"
+    if ! sudo pacman -S --needed --noconfirm ansible &> /dev/null ; then
+        printf "\nERROR: Unable to install Ansible. Please fully upgrade the system, and try again.\n\n"
+        exit 1
+    fi
+fi
+
+# Run bootstrap playbook
+ansible_playbook="$(dirname "${BASH_SOURCE[0]}")/ansible/playbook.yml"
+if [[ -f "$ansible_playbook" ]] ; then
+    if ! ansible-playbook -K "$ansible_playbook" ; then
+        printf "ERROR: The Ansible playbook was unable to complete successfully!\n\n"
+        exit 1
+    fi
+else
+    printf "\nERROR: Ansible playbook '%s' not found!\n\n" "$ansible_playbook"
+    exit 1
+fi
