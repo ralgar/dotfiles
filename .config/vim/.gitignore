@@ -1,0 +1,7 @@
+######################
+###   GIT IGNORE   ###
+######################
+
+# Ignore Vim plugin directories
+autoload/
+plugged/

@@ -1,0 +1,183 @@
+"""""""""""""""""""""""""""""""""""""
+"""  .VIMRC - User Settings for VIM
+"""""""""""""""""""""""""""""""""""""
+" Set VIM autoload directories
+let rtp=&runtimepath
+set runtimepath=~/.config/vim
+let &runtimepath.=','.rtp.',~/.config/vim/after'
+
+""""""""""""""""""""""""""""
+"""   General Settings
+""""""""""""""""""""""""""""
+" Enable filetype options (plugins, indentation, detection)
+filetype plugin indent on
+
+" Syntax and Line Numbers
+syntax enable
+set number
+
+" Indentation
+set tabstop=4		" Set TAB char to 4 spaces
+set softtabstop=4	" Simulate 4 space tabstop when pressing TAB
+set shiftwidth=4	" Make 'indentations' 4 spaces wide
+set expandtab		" Use spaces instead of TABs when indenting
+
+" Buffer Config
+set hidden
+nnoremap <C-N> :bnext<CR>
+nnoremap <C-P> :bprev<CR>
+
+" w!! sudo saves the file
+command! W execute 'w !sudo tee % > /dev/null' <bar> edit!
+
+" Set encoding
+set encoding=UTF-8
+
+" Set data security options
+set noswapfile
+set nobackup
+set nowritebackup
+set viminfofile=NONE
+set clipboard=
+
+""""""""""""
+"  Plugins
+""""""""""""
+" Automatically install Vim-Plug
+if empty(glob('~/.config/vim/autoload/plug.vim'))
+    silent !mkdir -p ~/.config/vim/autoload
+    silent !curl -fLo ~/.config/vim/autoload/plug.vim
+                \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall
+endif
+
+" Source plugin configs
+source ~/.config/vim/plug-config/ale.vim
+source ~/.config/vim/plug-config/coc.vim
+source ~/.config/vim/plug-config/markdown-preview.vim
+source ~/.config/vim/plug-config/signify.vim
+
+call plug#begin('~/.config/vim/plugged')
+	Plug 'vim-airline/vim-airline'
+	Plug 'tpope/vim-fugitive'
+	Plug 'mhinz/vim-signify'
+	Plug 'preservim/nerdtree'
+	Plug 'dense-analysis/ale'
+	Plug 'neoclide/coc.nvim', {'branch': 'release'}
+	Plug 'Yggdroot/indentLine'
+	Plug 'farmergreg/vim-lastplace'
+	Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+	Plug 'joshdick/onedark.vim'
+	Plug 'sheerun/vim-polyglot'
+	Plug 'ryanoasis/vim-devicons'
+call plug#end()
+
+
+""""""""""""""""""""""""
+"""   Keybindings
+""""""""""""""""""""""""
+" Switch Window | Note - This breaks Ctrl-i (Jumplist)
+nnoremap <silent> <Tab> <C-w><C-w>
+nnoremap <silent> <C-Left> :bprev<CR>
+nnoremap <silent> <C-Right> :bnext<CR>
+
+"""""""""""""""
+"  Statusline
+"""""""""""""""
+let g:airline_powerline_fonts = 1
+let g:airline_theme = 'onedark'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+
+"""""""""""""""""""
+"  User Interface
+"""""""""""""""""""
+"Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
+"If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
+"(see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
+if (empty($TMUX))
+  if (has("nvim"))
+    "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
+    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  endif
+  "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
+  "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
+  " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
+  if (has("termguicolors"))
+    set termguicolors
+  endif
+endif
+
+" Having longer updatetime (default 4000ms) leads to noticeable delays
+set updatetime=300
+
+" Start NERDTree. If a file is specified, move the cursor to its window.
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * NERDTree | if argc() > 0 || exists("s:std_in") | wincmd p | endif
+
+" Exit Vim if NERDTree is the only window left.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
+    \ quit | endif
+
+" If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
+autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
+    \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
+
+" Open the existing NERDTree on each new tab (buffer).
+autocmd BufWinEnter * silent NERDTreeMirror
+
+" For vim-polyglot
+set nocompatible
+
+" Line wrap with arrow keys
+set whichwrap=<,>
+
+" Center Cursor
+set scrolloff=999
+
+" Always show the sign column, otherwise it would shift the text
+if has("nvim-0.5.0") || has("patch-8.1.1564")
+  set signcolumn=yes
+else
+  set signcolumn=yes
+endif
+
+" Set color scheme and transparent background
+let g:onedark_hide_endofbuffer = 1
+let g:onedark_termcolors = 16
+let g:onedark_terminal_italics = 1
+colorscheme onedark
+hi Normal guibg=NONE ctermbg=NONE
+"hi NonText guibg=NONE ctermbg=NONE
+set fillchars=eob:\ ,
+
+" Command Line Config
+set cmdheight=2
+set noshowmode
+set noshowcmd
+set shortmess+=cF
+
+" IndentLine Config
+let g:indentLine_char = '¦'
+let g:indentLine_color_term = 178
+
+" LastPlace File/Buffer-type ignores
+let g:lastplace_ignore = "gitcommit,gitrebase,svn,hgcommit"
+let g:lastplace_ignore_buftype = "quickfix,nofile,help"
+
+
+"""""""""""""""""""""""""""""""""
+"""   Plugin Configurations   """
+"""""""""""""""""""""""""""""""""
+
+" vim-terraform (part of vim-polyglot)
+let g:terraform_align=0			" Auto-align with Tabularize
+let g:terraform_fold_sections=0		" Auto-fold sections of code
+let g:terraform_fmt_on_save=0		" Auto-format .tf* files (~ terraform fmt)
+
+" Markdown and JSON unconceal (part of vim-polyglot)
+let g:vim_json_syntax_conceal = 0
+let g:vim_markdown_conceal = 0
+let g:vim_markdown_conceal_code_blocks = 0
