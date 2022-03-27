@@ -1,3 +1,6 @@
 [user]
 	name = Ryan Algar
 	email = 59636191+ralgar@users.noreply.github.com
+
+[color]
+	ui = auto
