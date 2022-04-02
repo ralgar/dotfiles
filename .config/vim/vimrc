@@ -54,6 +54,7 @@ endif
 
 " Source plugin configs
 source ~/.config/vim/plug-config/ale.vim
+source ~/.config/vim/plug-config/bbye.vim
 source ~/.config/vim/plug-config/coc.vim
 source ~/.config/vim/plug-config/markdown-preview.vim
 source ~/.config/vim/plug-config/signify.vim
@@ -63,6 +64,7 @@ call plug#begin('~/.config/vim/plugged')
 	Plug 'tpope/vim-fugitive'
 	Plug 'mhinz/vim-signify'
 	Plug 'preservim/nerdtree'
+	Plug 'moll/vim-bbye'
 	Plug 'dense-analysis/ale'
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 	Plug 'Yggdroot/indentLine'
