@@ -33,7 +33,7 @@ window:
   #
   # Window opacity as a floating point number from `0.0` to `1.0`.
   # The value `0.0` is completely transparent and `1.0` is opaque.
-  opacity: 0.6
+  opacity: 1.0
 
   # Window decorations
   #
@@ -116,7 +116,6 @@ colors:
   primary:
     foreground: '0xabb2bf'
     background: '0x1e2127'
-    #background: '0x282c34'
 
     # Bright and dim foreground colors
     #
@@ -196,15 +195,15 @@ colors:
     white:   '0xabb2bf'
 
   # Bright colors
-  bright:
-    black:   '0x4b5263'
-    red:     '0xbe5046'
-    green:   '0x98c379'
-    yellow:  '0xd19a66'
-    blue:    '0x61afef'
-    magenta: '0xc678dd'
-    cyan:    '0x56b6c2'
-    white:   '0x3e4452'
+  #bright:
+  #  black:   '0x4b5263'
+  #  red:     '0xbe5046'
+  #  green:   '0x98c379'
+  #  yellow:  '0xd19a66'
+  #  blue:    '0x61afef'
+  #  magenta: '0xc678dd'
+  #  cyan:    '0x56b6c2'
+  #  white:   '0x3e4452'
 
   # Dim colors
   #
