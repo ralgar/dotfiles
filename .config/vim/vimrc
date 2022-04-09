@@ -28,8 +28,8 @@ nnoremap <C-N> :bnext<CR>
 nnoremap <C-P> :bprev<CR>
 
 " w!! sudo saves the file
-"command! W execute 'silent! write !sudo tee % > /dev/null' <bar> edit!
-cnoremap w!! execute 'silent! write !sudo tee % > /dev/null' <bar> edit!
+command! W execute 'silent! write !sudo tee % > /dev/null' <bar> edit!
+"cnoremap w!! execute 'silent! write !sudo tee % > /dev/null' <bar> edit!
 
 " Set encoding
 set encoding=UTF-8
