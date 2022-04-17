@@ -1,0 +1,12 @@
+---
+session_name: arch-grit
+windows:
+  - window_name: vim
+    start_directory: ~/Projects/arch-grit
+    shell_command:
+      - clear
+      - vim
+  - window_name: build
+    start_directory: ~/Projects/arch-grit
+  - window_name: ssh
+  - window_name: other
