@@ -72,6 +72,7 @@ call plug#begin('~/.config/vim/plugged')
 	Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 	Plug 'joshdick/onedark.vim'
 	Plug 'sheerun/vim-polyglot'
+	Plug 'aliou/bats.vim'
 	Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
