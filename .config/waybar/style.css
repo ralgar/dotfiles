@@ -211,7 +211,7 @@ label:focus {
 /* dwl modules */
 #custom-dwl_layout {
     color: #EC5800;
-    font-size: 28;
+    font-size: 28px;
 }
 
 #custom-dwl_title {
@@ -220,7 +220,7 @@ label:focus {
 
 #custom-dwl_tag {
     color: #875F00;
-    font-size: 28;
+    font-size: 28px;
 }
 
 #custom-dwl_tag.selected {
