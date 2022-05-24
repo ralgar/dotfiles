@@ -4,7 +4,7 @@
     /* `otf-font-awesome` is required to be installed for icons */
     /*font-family: Roboto, Helvetica, Arial, sans-serif;*/
     font-family: MesloLGS NF;
-    font-size: 14px;
+    font-size: 16px;
     min-height: 0;
 }
 
@@ -103,7 +103,6 @@ window#waybar.chromium {
 
 #clock {
     color: #abb2bf;
-    font-size: 16;
 }
 
 #battery {
@@ -211,7 +210,8 @@ label:focus {
 
 /* dwl modules */
 #custom-dwl_layout {
-    color: #EC5800
+    color: #EC5800;
+    font-size: 28;
 }
 
 #custom-dwl_title {
@@ -220,7 +220,7 @@ label:focus {
 
 #custom-dwl_tag {
     color: #875F00;
-    font-size: 24;
+    font-size: 28;
 }
 
 #custom-dwl_tag.selected {
