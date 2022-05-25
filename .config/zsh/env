@@ -5,8 +5,6 @@
 # This file is ALWAYS sourced, so its a great place
 # for frequently updated or important variables
 
-umask 0027
-
 # XDG Base Directories
 export XDG_CACHE_HOME="${HOME}/.cache"
 export XDG_CONFIG_HOME="${HOME}/.config"
@@ -14,6 +12,7 @@ export XDG_DATA_HOME="${HOME}/.local/share"
 export XDG_STATE_HOME="${HOME}/.local/state"
 
 # Path / Editor / Browser / Terminal / Etc
+export browser="firefox"
 export EDITOR="/usr/bin/vim"
 #export MANPAGER="vim -c 'set ft=man' -"
 export PATH="${HOME}/bin:$PATH"
