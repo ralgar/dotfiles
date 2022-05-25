@@ -12,7 +12,7 @@
     "mpd": {
         "format": " {stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}%",
         "format-disconnected": " Disconnected",
-        "format-stopped": " {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped",
+        "format-stopped": " {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}",
         "unknown-tag": "N/A",
         "interval": 2,
         "consume-icons": {
@@ -65,7 +65,7 @@
         "critical-threshold": 80,
         // "format-critical": "{icon} {temperatureC}°C",
         "format": "{icon} {temperatureC}°C",
-        "format-icons": ["", "", ""]
+        "format-icons": ["", "", "", "", ""]
     },
     "backlight": {
         // "device": "acpi_video1",
@@ -84,32 +84,32 @@
         "format-alt": "{icon} {time}",
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",
-        "format-icons": ["", "", "", "", ""]
+        "format-icons": ["", "", "", "", ""]
     },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": " {essid} ({signalStrength}%)",
-        "format-ethernet": " {ifname}: {ipaddr}/{cidr}",
-        "format-linked": " {ifname} (No IP)",
-        "format-disconnected": "⚠ Disconnected",
+        "format-wifi": "直 {signalStrength}%",
+        "format-ethernet": "ﯱ Connected",
+        "format-linked": "ﯳ (No IP)",
+        "format-disconnected": " Disconnected",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
         "format": "{icon} {volume}% | {format_source}",
         "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": " {format_source}",
+        "format-bluetooth-muted": "ﱝ {icon} {format_source}",
+        "format-muted": "ﱝ | {format_source}",
         "format-source": " {volume}%",
         "format-source-muted": "",
         "format-icons": {
             "headphone": "",
-            "hands-free": "",
-            "headset": "",
+            "hands-free": "",
+            "headset": "",
             "phone": "",
             "portable": "",
             "car": "",
-            "default": ["", "", ""]
+            "default": ["奄", "奔", "墳"]
         },
         "on-click": "pavucontrol"
     }

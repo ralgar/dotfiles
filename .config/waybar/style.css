@@ -109,10 +109,10 @@ window#waybar.chromium {
     color: #56b6c2;
 }
 
-#battery.charging, #battery.plugged {
+/*#battery.charging, #battery.plugged {
     color: #ffffff;
     background-color: #26A65B;
-}
+}*/
 
 @keyframes blink {
     to {
@@ -210,27 +210,28 @@ label:focus {
 
 /* dwl modules */
 #custom-dwl_layout {
-    color: #EC5800;
+    color: #E5C07B;
     font-size: 28px;
 }
 
 #custom-dwl_title {
-    color: #017AFF
+    color: #ABB2BF
 }
 
 #custom-dwl_tag {
-    color: #875F00;
+    color: #5C6370;
     font-size: 28px;
 }
 
 #custom-dwl_tag.selected {
-    color: #017AFF
+    color: #ABB2BF;
+    background-color: #1E2127;
 }
 
 #custom-dwl_tag.urgent {
-    background-color: #FF0000
+    background-color: #E06C75
 }
 
 #custom-dwl_tag.active {
-    border-bottom: 1px solid #EC5800
+    border-bottom: 2px solid #E5C07B
 }
