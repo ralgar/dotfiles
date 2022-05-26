@@ -7,7 +7,7 @@ if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
                 exec startx ;;
             "Wayland")
                 export XDG_CURRENT_DESKTOP="Unity"
-                exec dwl > "${XDG_RUNTIME_DIR:/run/user/$(id -u)}/dwltags" ;;
+                exec dwl > "${XDG_RUNTIME_DIR:-/run/user/$(id -u)}/dwltags" ;;
             "Console")
                 break ;;
             *)
