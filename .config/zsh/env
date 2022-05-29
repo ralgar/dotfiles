@@ -17,7 +17,11 @@ export EDITOR="/usr/bin/vim"
 #export MANPAGER="vim -c 'set ft=man' -"
 export PATH="${HOME}/bin:$PATH"
 export TERM="xterm-256color"
-export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
+
+# SSH Agent/Client Configuration
+export SSH_ASKPASS="$HOME/.ssh/get-pass.sh"
+export SSH_ASKPASS_REQUIRE="force"
+export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR:-/run/user/$(id -u)}/ssh-agent.socket"
 
 # Gaming / 3D Graphics
 export MANGOHUD=1
