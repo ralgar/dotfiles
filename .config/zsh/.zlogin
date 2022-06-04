@@ -8,6 +8,9 @@ if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
             "Wayland")
                 export XDG_CURRENT_DESKTOP="Unity"
                 export MOZ_ENABLE_WAYLAND=1
+                if which nvidia-smi &> /dev/null ; then      # Workaround for nvidia disappearing cursor
+                    export WLR_NO_HARDWARE_CURSORS=1
+                fi
                 exec dwl > "${XDG_RUNTIME_DIR:-/run/user/$(id -u)}/dwltags" ;;
             "Console")
                 break ;;
