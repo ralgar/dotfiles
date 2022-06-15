@@ -4,7 +4,8 @@ local theme_dir = config_dir .. '/themes/onedark'
 
 return {
     autorun = {
-        'alacritty'
+        'alacritty',
+        'sh -c "ssh-agent -D -a $XDG_RUNTIME_DIR/ssh-agent.socket"'
     },
     appmenu   = 'rofi -show drun -theme ' .. config_dir .. '/config/rofi.rasi',
     browser   = 'firefox',
