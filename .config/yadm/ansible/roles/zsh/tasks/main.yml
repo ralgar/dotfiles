@@ -1,8 +1,42 @@
 ---
-- name: Ensure zsh package is installed
+- name: Ensure packages are installed
   package:
-    name: zsh
+    name:
+      - zsh
+      - zsh-autosuggestions
+      - zsh-syntax-highlighting
+      - zsh-theme-powerlevel10k
     state: present
+  become: yes
+
+- name: Ensure font directories exist
+  file:
+    path: "{{ font_dir }}"
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+  loop:
+    - /usr/share/fonts
+    - /usr/share/fonts/TTF
+  loop_control:
+    loop_var: font_dir
+  become: yes
+
+- name: Get powerlevel10k fonts
+  get_url:
+    url: "https://github.com/romkatv/powerlevel10k-media/raw/master/{{ font }}"
+    dest: "/usr/share/fonts/TTF/{{ font }}"
+    owner: root
+    group: root
+    mode: 0644
+  loop:
+    - "MesloLGS NF Regular.ttf"
+    - "MesloLGS NF Bold.ttf"
+    - "MesloLGS NF Italic.ttf"
+    - "MesloLGS NF Bold Italic.ttf"
+  loop_control:
+    loop_var: font
   become: yes
 
 - name: Get path of zsh
@@ -14,3 +48,4 @@
   user:
     name: "{{ ansible_user_id }}"
     shell: "{{ zsh_path.stdout }}"
+  become: yes

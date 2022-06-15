@@ -1,9 +1,6 @@
 #!/bin/bash
 
 
-# Source the new environment
-source "$HOME/.zshenv"
-
 # Install Ansible package if needed
 if ! which ansible &> /dev/null ; then
     printf "\nInstalling Ansible...\n"
@@ -24,3 +21,5 @@ else
     printf "\nERROR: Ansible playbook '%s' not found!\n\n" "$ansible_playbook"
     exit 1
 fi
+
+printf "\nFinished! Run 'exec zsh' to replace the current environment.\n"
