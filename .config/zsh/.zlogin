@@ -11,6 +11,7 @@ if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
                 if which nvidia-smi &> /dev/null ; then      # Workaround for nvidia disappearing cursor
                     export WLR_NO_HARDWARE_CURSORS=1
                 fi
+                import-gsettings    # Workaround for GTK themes not applying
                 exec dwl > "${XDG_RUNTIME_DIR:-/run/user/$(id -u)}/dwltags" ;;
             "Console")
                 break ;;
