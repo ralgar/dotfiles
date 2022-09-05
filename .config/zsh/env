@@ -12,7 +12,7 @@ export XDG_DATA_HOME="${HOME}/.local/share"
 export XDG_STATE_HOME="${HOME}/.local/state"
 
 # Path / Editor / Browser / Terminal / Etc
-export browser="firefox"
+export BROWSER="firefox"
 export EDITOR="/usr/bin/vim"
 #export MANPAGER="vim -c 'set ft=man' -"
 export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
