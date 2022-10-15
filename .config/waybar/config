@@ -6,7 +6,7 @@
     // Choose the order of the modules
     "modules-left": ["mpd"],
     "modules-center": ["clock"],
-    "modules-right": ["network", "pulseaudio", "cpu", "memory", "temperature", "battery", "tray"],
+    "modules-right": ["network", "pulseaudio", "cpu", "memory", "temperature", "battery"],
 
     // Modules configuration
     "mpd": {
@@ -41,10 +41,6 @@
             "activated": "",
             "deactivated": ""
         }
-    },
-    "tray": {
-        // "icon-size": 21,
-        "spacing": 10
     },
     "clock": {
         // "timezone": "America/New_York",
@@ -119,49 +115,30 @@
     "height": 38, // Waybar height (to be removed for auto height)
 
     // Choose the order of the modules
-    "modules-left": ["custom/dwl_tag#0", "custom/dwl_tag#1", "custom/dwl_tag#2", "custom/dwl_tag#3", "custom/dwl_tag#4", "custom/dwl_tag#5"],
-    "modules-center": ["custom/dwl_title"],
-    "modules-right": ["custom/dwl_layout"],
+    "modules-left": ["wlr/workspaces"],
+    "modules-center": ["hyprland/window"],
+    "modules-right": ["tray"],
     // Modules configuration
-    "custom/dwl_tag#0": {
-        "exec": "$XDG_CONFIG_HOME/waybar/modules/waybar-dwl/waybar-dwl.sh '' 0",
-        "format": "{}",
-        "return-type": "json"
+    "wlr/workspaces": {
+        "format": "{icon}",
+        "on-click": "activate",
+        "all-outputs": false,
+        "format-icons": {
+            "1": "",
+            "2": "",
+            "3": "",
+            "4": "",
+            "5": "",
+            "urgent": "",
+            "active": "",
+            "default": ""
+        }
     },
-    "custom/dwl_tag#1": {
-        "exec": "$XDG_CONFIG_HOME/waybar/modules/waybar-dwl/waybar-dwl.sh '' 1",
-        "format": "{}",
-        "return-type": "json"
+    "hyprland/window": {
+        "format": "{}"
     },
-    "custom/dwl_tag#2": {
-        "exec": "$XDG_CONFIG_HOME/waybar/modules/waybar-dwl/waybar-dwl.sh '' 2",
-        "format": "{}",
-        "return-type": "json"
-    },
-    "custom/dwl_tag#3": {
-        "exec": "$XDG_CONFIG_HOME/waybar/modules/waybar-dwl/waybar-dwl.sh '' 3",
-        "format": "{}",
-        "return-type": "json"
-    },
-    "custom/dwl_tag#4": {
-        "exec": "$XDG_CONFIG_HOME/waybar/modules/waybar-dwl/waybar-dwl.sh '' 4",
-        "format": "{}",
-        "return-type": "json"
-    },
-    "custom/dwl_tag#5": {
-        "exec": "$XDG_CONFIG_HOME/waybar/modules/waybar-dwl/waybar-dwl.sh '' 5",
-        "format": "{}",
-        "return-type": "json"
-    },
-    "custom/dwl_layout": {
-        "exec": "$XDG_CONFIG_HOME/waybar/modules/waybar-dwl/waybar-dwl.sh '' layout",
-        "format": "{}",
-        "return-type": "json"
-    },
-    "custom/dwl_title": {
-        "exec": "$XDG_CONFIG_HOME/waybar/modules/waybar-dwl/waybar-dwl.sh '' title",
-        "format": "{}",
-        "escape": true,
-        "return-type": "json"
+    "tray": {
+        "icon-size": 24,
+        "spacing": 10
     },
 }]

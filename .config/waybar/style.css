@@ -40,6 +40,8 @@ window#waybar.chromium {
 
 #workspaces button {
     padding: 0 5px;
+    min-width: 28px;
+    font-size: 24px;
     color: #5C6370;
     /* Use box-shadow instead of border so the text isn't offset */
     box-shadow: inset 0 -3px transparent;
@@ -49,10 +51,9 @@ window#waybar.chromium {
 #workspaces button:hover {
     color: #5C6370;
     background: rgba(12, 14, 17, 1);
-    box-shadow: inset 0 -3px #ABB2BF;
 }
 
-#workspaces button.focused {
+#workspaces button.active {
     color: #ABB2BF;
     background-color: #1E2127;
     box-shadow: inset 0 -3px #ABB2BF;
@@ -60,6 +61,11 @@ window#waybar.chromium {
 
 #workspaces button.urgent {
     background-color: #eb4d4b;
+}
+
+/* Hyprland Active Window module */
+#window {
+    font-size: 18px;
 }
 
 #mode {
@@ -86,20 +92,15 @@ window#waybar.chromium {
     color: #ffffff;
 }
 
-#window,
-#workspaces {
-    margin: 0 4px;
-}
-
 /* If workspaces is the leftmost module, omit left margin */
-.modules-left > widget:first-child > #workspaces {
+/*.modules-left > widget:first-child > #workspaces {
     margin-left: 0;
-}
+}*/
 
 /* If workspaces is the rightmost module, omit right margin */
-.modules-right > widget:last-child > #workspaces {
+/*.modules-right > widget:last-child > #workspaces {
     margin-right: 0;
-}
+}*/
 
 #clock {
     color: #abb2bf;
@@ -174,6 +175,8 @@ label:focus {
     background-color: #eb4d4b;
 }
 
+
+/* System Tray module */
 #tray {
 }
 
@@ -195,6 +198,7 @@ label:focus {
     color: #2d3436;
 }
 
+/* MPD module */
 #mpd {
     color: #e06c75;
 }
@@ -206,32 +210,4 @@ label:focus {
 }
 
 #mpd.paused {
-}
-
-/* dwl modules */
-#custom-dwl_layout {
-    color: #E5C07B;
-    font-size: 28px;
-}
-
-#custom-dwl_title {
-    color: #ABB2BF
-}
-
-#custom-dwl_tag {
-    color: #5C6370;
-    font-size: 28px;
-}
-
-#custom-dwl_tag.selected {
-    color: #ABB2BF;
-    background-color: #1E2127;
-}
-
-#custom-dwl_tag.urgent {
-    background-color: #E06C75
-}
-
-#custom-dwl_tag.active {
-    border-bottom: 2px solid #E5C07B
 }
