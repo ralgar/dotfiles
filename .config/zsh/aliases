@@ -22,3 +22,8 @@ alias ll='ls -lh --color --group-directories-first'
 alias diff='diff --color=auto'
 alias grep='grep --color=auto'
 alias ip='ip -color=auto'
+
+######################
+###   Kubernetes   ###
+######################
+alias kube-zones="kubectl get nodes -o custom-columns=NAME:'{.metadata.name}',REGION:'{.metadata.labels.topology\.kubernetes\.io/region}',ZONE:'{metadata.labels.topology\.kubernetes\.io/zone}'"
