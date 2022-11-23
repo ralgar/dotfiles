@@ -16,6 +16,9 @@ filetype plugin indent on
 syntax enable
 set number
 
+" Terminal Window Title
+set title
+
 " Indentation
 set tabstop=4		" Set TAB char to 4 spaces
 set softtabstop=4	" Simulate 4 space tabstop when pressing TAB
