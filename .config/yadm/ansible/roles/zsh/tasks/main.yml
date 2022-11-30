@@ -26,15 +26,15 @@
 - name: Get powerlevel10k fonts
   get_url:
     url: "https://github.com/romkatv/powerlevel10k-media/raw/master/{{ font }}"
-    dest: "/usr/share/fonts/TTF/{{ font }}"
+    dest: "/usr/share/fonts/TTF/{{ font | replace('%20', ' ') }}"
     owner: root
     group: root
     mode: 0644
   loop:
-    - "MesloLGS NF Regular.ttf"
-    - "MesloLGS NF Bold.ttf"
-    - "MesloLGS NF Italic.ttf"
-    - "MesloLGS NF Bold Italic.ttf"
+    - "MesloLGS%20NF%20Regular.ttf"
+    - "MesloLGS%20NF%20Bold.ttf"
+    - "MesloLGS%20NF%20Italic.ttf"
+    - "MesloLGS%20NF%20Bold%20Italic.ttf"
   loop_control:
     loop_var: font
   become: yes

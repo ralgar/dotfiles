@@ -12,24 +12,3 @@
     group: "{{ ansible_user_gid }}"
     mode: 0700
     state: directory
-
-# Set up the SSH key agent
-- name: Get path of SSH agent
-  command: which ssh-agent
-  register: ssh_agent_path
-  changed_when: false
-
-- name: Template the SSH agent service
-  template:
-    src: ssh-agent.service.j2
-    dest: "{{ ansible_user_dir }}/.config/systemd/user/ssh-agent.service"
-    owner: "{{ ansible_user_uid }}"
-    group: "{{ ansible_user_gid }}"
-    mode: 0644
-
-- name: Ensure the SSH agent service is enabled and started
-  systemd:
-    name: ssh-agent.service
-    scope: user
-    enabled: yes
-    state: started

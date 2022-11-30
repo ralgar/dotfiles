@@ -2,10 +2,12 @@
 - name: Make sure Vim package is installed
   package:
     name:
+      - nodejs-lts-hydrogen
+      - npm
       - vim
     state: present
   become: yes
 
 - name: Initialize/Update Vim plugins (always returns OK)
-  command: vim '+PlugUpdate' '+PlugClean!' '+PlugUpdate' '+qall'
+  command: vim --clean '+PlugUpdate' '+PlugClean!' '+PlugUpdate' '+qall'
   changed_when: false
