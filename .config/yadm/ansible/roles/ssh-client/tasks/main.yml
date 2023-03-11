@@ -1,14 +1,14 @@
 ---
 - name: Ensure openssh package is installed
-  package:
+  community.general.pacman:
     name: openssh
     state: present
-  become: yes
+  become: false
 
 - name: Ensure SSH client socket directory exists
-  file:
-    path: "{{ ansible_user_dir }}/.ssh/sockets"
-    owner: "{{ ansible_user_uid }}"
-    group: "{{ ansible_user_gid }}"
+  ansible.builtin.file:
+    path: "{{ home }}/.ssh/sockets"
+    owner: "{{ user }}"
+    group: "{{ user }}"
     mode: 0700
     state: directory

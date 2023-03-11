@@ -1,25 +1,45 @@
 #!/bin/bash
 
+source "$(dirname "${BASH_SOURCE[0]}")/lib/interactive"
 
-# Install Ansible package if needed
-if ! which ansible &> /dev/null ; then
-    printf "\nInstalling Ansible...\n"
-    if ! sudo pacman -S --needed --noconfirm ansible &> /dev/null ; then
-        printf "\nERROR: Unable to install Ansible. Please fully upgrade the system, and try again.\n\n"
-        exit 1
+
+function assert_ansible {
+    if ! which ansible ; then
+        if ! sudo pacman -S --needed --noconfirm ansible ; then
+            return 1
+        fi
     fi
+}
+
+function elevate_privilege {
+    echo -e "\n${bld}${yel}WARNING: This script requires root privileges.${off}"
+    yes_cmd="echo ; sudo -E \"${BASH_SOURCE[0]}\""
+    no_cmd="false"
+    yesorno "Do you want to invoke sudo?" || return 1
+}
+
+function run_playbook {
+    playbook="$(dirname "${BASH_SOURCE[0]}")/ansible/$1"
+    if [[ -f "$playbook" ]] ; then
+        if ! ansible-playbook -b --become-user="$SUDO_USER" "$playbook" ; then
+            printf "ERROR: The Ansible playbook was unable to complete successfully!\n\n"
+            return 1
+        fi
+    else
+        printf "\nERROR: Ansible playbook '%s' not found!\n\n" "$playbook"
+        return 1
+    fi
+}
+
+if [[ $EUID != 0 ]] ; then
+    elevate_privilege || exit 1
+    exit 0
 fi
 
-# Run bootstrap playbook
-ansible_playbook="$(dirname "${BASH_SOURCE[0]}")/ansible/playbook.yml"
-if [[ -f "$ansible_playbook" ]] ; then
-    if ! ansible-playbook -K "$ansible_playbook" ; then
-        printf "ERROR: The Ansible playbook was unable to complete successfully!\n\n"
-        exit 1
-    fi
-else
-    printf "\nERROR: Ansible playbook '%s' not found!\n\n" "$ansible_playbook"
-    exit 1
-fi
+desc="Asserting Ansible package"
+run assert_ansible
+
+desc="Running bootstrap playbook"
+run run_playbook playbook.yml
 
 printf "\nFinished! Run 'exec zsh' to replace the current environment.\n"

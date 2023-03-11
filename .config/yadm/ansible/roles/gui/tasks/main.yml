@@ -1,0 +1,19 @@
+---
+- name: Install AUR packages
+  ansible.builtin.command: paru -S --needed --noconfirm hyprland
+  changed_when: false
+  loop:
+    - hyprland
+    - hyprpaper-git
+    - waybar-hyprland
+
+- name: Install repo packages
+  community.general.pacman:
+    # TODO: Investigate the safety of this
+    # executable: /usr/bin/paru
+    name:
+      - alacritty
+      - mpd
+      - firefox
+      - wofi
+  become: false

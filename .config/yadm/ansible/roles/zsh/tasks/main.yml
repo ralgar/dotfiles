@@ -1,16 +1,16 @@
 ---
 - name: Ensure packages are installed
-  package:
+  community.general.pacman:
     name:
       - zsh
       - zsh-autosuggestions
       - zsh-syntax-highlighting
       - zsh-theme-powerlevel10k
     state: present
-  become: yes
+  become: false
 
 - name: Ensure font directories exist
-  file:
+  ansible.builtin.file:
     path: "{{ font_dir }}"
     state: directory
     owner: root
@@ -21,10 +21,10 @@
     - /usr/share/fonts/TTF
   loop_control:
     loop_var: font_dir
-  become: yes
+  become: false
 
 - name: Get powerlevel10k fonts
-  get_url:
+  ansible.builtin.get_url:
     url: "https://github.com/romkatv/powerlevel10k-media/raw/master/{{ font }}"
     dest: "/usr/share/fonts/TTF/{{ font | replace('%20', ' ') }}"
     owner: root
@@ -37,15 +37,14 @@
     - "MesloLGS%20NF%20Bold%20Italic.ttf"
   loop_control:
     loop_var: font
-  become: yes
+  become: false
 
 - name: Get path of zsh
-  command: which zsh
+  ansible.builtin.command: which zsh
   register: zsh_path
   changed_when: false
 
 - name: Ensure user shell is set to zsh
-  user:
+  ansible.builtin.user:
     name: "{{ ansible_user_id }}"
     shell: "{{ zsh_path.stdout }}"
-  become: yes

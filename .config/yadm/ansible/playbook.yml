@@ -4,9 +4,11 @@
 ---
 - name: Configure Local System
   hosts: localhost
-  become: no
+  vars:
+    user: "{{ lookup('ansible.builtin.env', 'SUDO_USER') }}"
+    home: "{{ lookup('ansible.builtin.env', 'HOME') }}"
   roles:
-    - mpd
+    - gui
     - ssh-client
     - vim
     - zsh

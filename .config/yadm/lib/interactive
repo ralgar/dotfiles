@@ -1,0 +1,150 @@
+#!/bin/bash
+#####################################################################################
+#####	NAME / DESCRIPTION
+#####################################################################################
+
+########################################
+###     DEBUGGING
+########################################
+if [[ $DEBUG = 1 ]] ; then
+    set -xe
+fi
+
+########################################
+###	TEXT MANIPULATION
+########################################
+off='\e[0m'		# Reset all attributes
+bld='\e[1m'		# Bold/bright text
+dim='\e[2m'		# Dim text
+und='\e[4m'		# Underlined text
+bln='\e[5m'		# Blinking text
+inv='\e[7m'		# Inverted text (FG/BG)
+hid='\e[8m'		# Hidden text
+red='\e[31m'		# Red text
+grn='\e[32m'		# Green text
+yel='\e[33m'		# Yellow text
+blu='\e[34m'		# Blue text
+pur='\e[35m'		# Purple text
+cyn='\e[36m'		# Cyan text
+
+########################################
+###	LINE SEPARATOR FUNCTION
+########################################
+# Prints a line spaced, window-wide separator / header / footer
+# 3 line header / footer + message by invoking as line_ "message"
+line_() {
+    shopt -s checkwinsize ; (:|:)
+    printf "\n%*s\n" $((COLUMNS)) '' | tr ' ' =
+    if [[ -n $1 ]] ; then
+        printf "===       %s" "$1"
+        printf '\n%*s\n\n' $((COLUMNS)) '' | tr ' ' =
+    else
+        printf "\n"
+    fi
+}
+# For calling a fixed length line for log files
+#  in case script run in background. Function same as above.
+# shellcheck disable=SC2183
+line_log() {
+    printf "\n%90s\n" | tr ' ' = >> "$log"
+    if [[ -n $1 ]] ; then
+        printf "===       %s" "$1" >> "$log"
+        printf "\n%90s\n\n" | tr ' ' = >> "$log"
+    else
+        printf "\n"
+    fi
+}
+
+########################################
+###	CLEANUP / TEMP FILE / TRAP
+########################################
+cleanup() {
+    rm -f "$temp"				# Remove temp file defined below
+    printf "\n"					# Clean up any trailing end-line symbols
+    setterm -cursor on				# Show the terminal cursor
+}
+temp=$(mktemp)
+trap cleanup EXIT 1 2 3 SIGTRAP 6 14 15
+
+########################################
+###	CHECK USER PRIVILEGES
+########################################
+if [[ $PRIVILEGE = 1 && $EUID != 0 ]] ; then
+    printf "\n${bld}${red}ERROR: This script must be run as root.${off}"
+    exit 2
+elif [[ $PRIVILEGE = 2 && $EUID = 0 ]] ; then
+    printf "\n${bld}${red}ERROR: This script must NOT be run as root.${off}"
+    exit 2
+fi
+
+#############################################
+###	YES OR NO FUNCTION
+#############################################
+yesorno() {
+    printf "\n${bld}${yel}%s${off}\n" "$1"
+    setterm -cursor on
+    while true; do
+        read -rp "Enter your choice [y/n]: " yn
+        setterm -cursor off
+        case $yn in
+            [Yy]* )
+                if eval "$yes_cmd" ; then
+                    break
+                else
+                    return 1
+                fi ;;
+            [Nn]* )
+                if eval "$no_cmd"  ; then
+                    break
+                else
+                    return 1
+                fi ;;
+            * ) printf "\n${bld}${yel}Please answer [Y/y] or [N/n].${off}\n" ;;
+        esac
+    done
+}
+
+########################################
+###	RUN FUNCTION
+########################################
+# Used for smart output / debugging / logging
+# See log settings at top of script
+log="$LOG_DIR/$(basename -s .sh "$0").log"
+run() {
+	"$@" &> "$temp" &
+	run_pid=$!
+	while [[ -d /proc/"$run_pid" ]] ; do
+		printf "[      ]  $desc\r" ; sleep .75
+		[[ -d /proc/"$run_pid" ]] || break
+		printf "[ .    ]  $desc\r" ; sleep .75
+		[[ -d /proc/"$run_pid" ]] || break
+		printf "[ ..   ]  $desc\r" ; sleep .75
+		[[ -d /proc/"$run_pid" ]] || break
+		printf "[ ...  ]  $desc\r" ; sleep .75
+		[[ -d /proc/"$run_pid" ]] || break
+		printf "[ .... ]  $desc\r" ; sleep .75
+	done
+	wait $run_pid ; code=$?
+	if [[ $code = 0 ]] ; then
+		if [[ $LOG_LEVEL = 2 ]] ; then
+			line_log "${bld}${grn}SUCCESS:${off} $*"
+			cat "$temp" >> "$log"
+		fi
+		printf "[  ${bld}${grn}OK${off}  ]  $desc\n"
+	else
+		printf "[ ${bld}${red}FAIL${off} ]  $desc"
+		sleep 3 ; printf "\n\n"
+		line_ "${bld}${red}OUTPUT FROM FAILED COMMAND:  ${*}${off}"
+		cat "$temp"
+		line_ "${bld}${red}END OF OUTPUT FROM COMMAND:  ${*}${off}"
+		printf "\n${bld}${red}ERROR:${off} A command exited with code $code"
+		printf "\nThe output has been printed above for review.\n"
+        exit 2
+	fi
+}
+
+setterm -cursor off
+
+####################################################################################
+#####	END OF LIBRARY
+####################################################################################
