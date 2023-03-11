@@ -51,3 +51,7 @@ setopt hist_ignore_space
 . "$ZDOTDIR/trap-rehash.zsh"
 . /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 . /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# Source OpenAI API key
+OPENAI_API_KEY="$XDG_CONFIG_HOME/openai/config"
+[[ -f "$OPENAI_API_KEY" ]] && source "$OPENAI_API_KEY"
