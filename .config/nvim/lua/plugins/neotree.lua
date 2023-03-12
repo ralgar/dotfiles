@@ -9,7 +9,7 @@ use({
   config = function()
     vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
     require("neo-tree").setup({
-      auto_close = true,
+      close_if_last_window = true,
       window = {
         width = 31  -- Match NerdTREE default
       }
