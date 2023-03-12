@@ -27,5 +27,6 @@ require('lsp')
 require('keybinds')
 require('settings')
 
--- Since we are using parallel, we MUST call user.flush()
+-- Flush any missed plugins, and clean up old packages
 user.flush()
+user.clean()
