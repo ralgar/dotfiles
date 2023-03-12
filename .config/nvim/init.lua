@@ -1,64 +1,30 @@
+------------------------------------------
+---   INITIALIZE THE PACKAGE MANAGER
+------------------------------------------
+local user_packadd_path = "faerryn_user.nvim/default/default/default/default"
+local user_install_path = vim.fn.stdpath "data" .. "/site/pack/user/opt/" .. user_packadd_path
+
+if vim.fn.isdirectory(user_install_path) == 0 then
+  os.execute(
+    "git clone --quiet --depth 1 https://github.com/faerryn/user.nvim.git " ..
+    vim.fn.shellescape(user_install_path)
+  )
+end
+vim.api.nvim_command("packadd " .. vim.fn.fnameescape(user_packadd_path))
+
+local user = require "user"
+user.setup { parallel = true }
+use = user.use
+
+-- Have user.nvim manage itself
+use "faerryn/user.nvim"
+
+----------------------------
+---    INCLUDE MODULES
+----------------------------
 require('plugins')
 require('keybinds')
+require('settings')
 
-local set = vim.opt
-
-----------------------------
----   General Settings
-----------------------------
---- Set encoding
-set.encoding = 'UTF-8'
-
--- Enable filetype options (plugins, indentation, detection)
-vim.cmd('filetype plugin indent on')
-
--- Syntax and Line Numbers
-vim.cmd('syntax enable')
-set.number = true
-
--- Terminal Window Title
-set.title = true
-
--- Indentation
-set.tabstop     = 4
-set.softtabstop = 4
-set.shiftwidth  = 4
-set.expandtab   = true
-
--- Search options
-set.ignorecase = true
-
--- Buffer Config
-set.hidden = true
-vim.keymap.set('n', '<C-N>', ':bnext<CR>')
-vim.keymap.set('n', '<C-P>', ':bprev<CR>')
-
--- Set data security options
-set.swapfile = false
-set.backup = false
-set.writebackup = false
-set.viminfofile = 'NONE'
-set.clipboard = ''
-
-
--------------------
----   UI / UX
--------------------
-
--- Line wrap with arrow keys
-set.whichwrap = '<,>'
-
--- Vertically center the cursor
-set.scrolloff = 999
-
--- Set 24-bit true color
-set.termguicolors = true
-
--- Always show the sign column, otherwise it would shift the text
-set.signcolumn = 'yes'
-
--- Command Line Config
-set.cmdheight  = 2
-set.showmode = false
-set.showcmd  = false
-vim.o.shortmess  = vim.o.shortmess .. 'cF'
+-- Since we are using parallel, we MUST call user.flush()
+user.flush()
