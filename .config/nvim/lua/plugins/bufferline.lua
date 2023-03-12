@@ -5,6 +5,12 @@ use({
   'akinsho/bufferline.nvim',
   config = function()
     require("bufferline").setup {
+      highlights = {
+        offset_separator = {
+          bg = '#282c34',
+          fg = '#282c34',
+        }
+      },
       options = {
         separator_style = "slant",
         offsets = {
