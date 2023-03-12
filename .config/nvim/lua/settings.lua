@@ -54,6 +54,12 @@ set.termguicolors = true
 -- Always show the sign column, otherwise it would shift the text
 set.signcolumn = 'yes'
 
+-- Set diagnostic (sign) icons
+vim.fn.sign_define("DiagnosticSignWarn",  {text = " ", texthl = "DiagnosticSignWarn"})
+vim.fn.sign_define("DiagnosticSignError", {text = " ", texthl = "DiagnosticSignError"})
+vim.fn.sign_define("DiagnosticSignInfo",  {text = " ", texthl = "DiagnosticSignInfo"})
+vim.fn.sign_define("DiagnosticSignHint",  {text = "", texthl = "DiagnosticSignHint"})
+
 -- Command Line Config
 set.cmdheight  = 2
 set.showmode = false
