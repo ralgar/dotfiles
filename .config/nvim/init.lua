@@ -12,7 +12,7 @@ if vim.fn.isdirectory(user_install_path) == 0 then
 end
 vim.api.nvim_command("packadd " .. vim.fn.fnameescape(user_packadd_path))
 
-local user = require "user"
+user = require "user"
 user.setup { parallel = true }
 use = user.use
 
@@ -23,6 +23,7 @@ use "faerryn/user.nvim"
 ---    INCLUDE MODULES
 ----------------------------
 require('plugins')
+require('lsp')
 require('keybinds')
 require('settings')
 
