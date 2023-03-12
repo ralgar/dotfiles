@@ -5,7 +5,17 @@
 use({
   'williamboman/mason.nvim',
   config = function()
-    require('mason').setup()
+    require('mason').setup({
+      ui = {
+        border = 'rounded',
+        height = 0.8,
+        icons = {
+          package_installed = '',
+          package_pending = '',
+          package_uninstalled = ''
+        }
+      }
+    })
   end
 })
 user.flush()
