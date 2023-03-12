@@ -4,7 +4,6 @@
 
 use('tpope/vim-fugitive')
 
-vim.api.nvim_set_hl(0, 'GitSignsChange', { fg=Yellow })
 use {
   'lewis6991/gitsigns.nvim',
   config = function()
