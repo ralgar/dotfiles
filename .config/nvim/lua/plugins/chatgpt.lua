@@ -5,7 +5,7 @@ use "nvim-telescope/telescope.nvim"
 
 use({
   "jackMort/ChatGPT.nvim",
-  tag = "v0.1.1-alpha",
+  branch = "v0.1.1-alpha",
   config = function()
     require("chatgpt").setup({
       -- Additional config goes here
