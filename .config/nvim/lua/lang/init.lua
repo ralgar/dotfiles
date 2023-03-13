@@ -7,3 +7,5 @@ use({
         vim.cmd([[ let g:terraform_fmt_on_save = 0 ]])
     end
 })
+
+require('lang/markdown')
