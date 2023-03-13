@@ -1,0 +1,8 @@
+term=alacritty
+insensitive=true
+allow_images=true
+allow_markup=true
+gtk_dark=true
+no_actions=true
+mode=drun
+prompt=Search

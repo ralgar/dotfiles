@@ -1,0 +1,35 @@
+window {
+	margin: 5px;
+	padding: 3px;
+	/*background-color: rgba(0,0,0,255);*/
+	border: 3px solid #3b4252;
+	border-radius: 9px;
+	/*font-family: 'Meslo LGS NF';*/
+}
+
+#input {
+	border-radius: 5px;
+	margin: 5px;
+}
+
+#inner-box {
+	border-radius: 3px;
+}
+
+#outer-box {
+	margin: 10px;
+}
+
+#scroll {
+	margin: 5px;
+}
+
+#text {
+	margin: 5px;
+	color: #e1f2f5;
+}
+
+#entry:selected {
+	border-radius: 5px;
+	background-color: rgba(97,175,239,0.5);
+}
