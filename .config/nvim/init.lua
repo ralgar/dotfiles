@@ -24,6 +24,7 @@ use "faerryn/user.nvim"
 ----------------------------
 require('plugins')
 require('lsp')
+require('lang')
 require('keybinds')
 require('settings')
 
