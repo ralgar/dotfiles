@@ -8,4 +8,5 @@ use({
     end
 })
 
+require('lang/common')
 require('lang/markdown')
