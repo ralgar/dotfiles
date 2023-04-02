@@ -12,6 +12,8 @@ vim.cmd('filetype plugin indent on')
 -- Syntax and Line Numbers
 vim.cmd('syntax enable')
 set.number = true
+set.cursorline = true
+set.cursorlineopt = 'number'
 
 -- Terminal Window Title
 set.title = true
