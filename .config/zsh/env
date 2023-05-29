@@ -13,7 +13,7 @@ export XDG_STATE_HOME="${HOME}/.local/state"
 
 # Path / Editor / Browser / Terminal / Etc
 export BROWSER="firefox"
-export EDITOR="/usr/bin/vim"
+export EDITOR="/usr/bin/nvim"
 #export MANPAGER="vim -c 'set ft=man' -"
 export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 export TERM="xterm-256color"
@@ -28,7 +28,6 @@ export MANGOHUD=1
 
 # Path Mapping
 export LESSHISTFILE=-
-export VIMINIT="source ${XDG_CONFIG_HOME}/vim/vimrc"
 export GNUPGHOME="${XDG_CONFIG_HOME}/gnupg"
 export CHROOT="${HOME}/Projects/chroot"
 export GTK2_RC_FILES="${XDG_CONFIG_HOME}/gtk-2.0/gtkrc"

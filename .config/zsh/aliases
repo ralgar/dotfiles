@@ -8,6 +8,9 @@ alias sudo='sudo '
 # SSH $TERM fix
 alias ssh='ssh -o StrictHostKeyChecking=no'
 
+# NeoVim instead of Vim
+alias vim='nvim'
+
 # mv and cp edge cases
 alias mv='mv --strip-trailing-slashes'
 alias cp='cp --strip-trailing-slashes'
