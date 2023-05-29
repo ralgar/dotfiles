@@ -22,11 +22,11 @@ use "faerryn/user.nvim"
 ----------------------------
 ---    INCLUDE MODULES
 ----------------------------
+require('keybinds')
+require('settings')
 require('plugins')
 require('lsp')
 require('lang')
-require('keybinds')
-require('settings')
 
 -- Flush any missed plugins, and clean up old packages
 user.flush()
