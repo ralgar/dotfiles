@@ -1,0 +1,7 @@
+---
+- name: Make sure Neovim package is installed
+  package:
+    name:
+      - neovim
+    state: present
+  become: false

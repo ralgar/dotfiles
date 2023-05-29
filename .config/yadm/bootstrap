@@ -42,4 +42,4 @@ run assert_ansible
 desc="Running bootstrap playbook"
 run run_playbook playbook.yml
 
-printf "\nFinished! Run 'exec zsh' to replace the current environment.\n"
+printf "\nFinished! Log out and in again to replace the current environment.\n"

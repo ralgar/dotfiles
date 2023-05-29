@@ -9,6 +9,6 @@
     home: "{{ lookup('ansible.builtin.env', 'HOME') }}"
   roles:
     - gui
+    - neovim
     - ssh-client
-    - vim
     - zsh
