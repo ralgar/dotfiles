@@ -4,7 +4,7 @@
     /* `otf-font-awesome` is required to be installed for icons */
     /*font-family: Roboto, Helvetica, Arial, sans-serif;*/
     font-family: MesloLGS NF;
-    font-size: 16px;
+    /*font-size: 16px;*/
     min-height: 0;
 }
 
@@ -45,7 +45,7 @@ window#waybar.chromium {
 
 #workspaces button {
     padding: 0 5px;
-    min-width: 28px;
+    min-width: 32px;
     font-size: 24px;
     color: #5C6370;
     /* Use box-shadow instead of border so the text isn't offset */
@@ -78,7 +78,6 @@ window#waybar.chromium {
     border-bottom: 3px solid #ffffff;
 }
 
-#clock,
 #battery,
 #cpu,
 #memory,
@@ -196,6 +195,7 @@ label:focus {
 
 #idle_inhibitor {
     color: #5C6370;
+    font-size: 24px;
 }
 
 #idle_inhibitor.activated {

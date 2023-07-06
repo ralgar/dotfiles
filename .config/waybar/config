@@ -120,15 +120,23 @@
             "1": "",
             "2": "",
             "3": "",
-            "4": "",
+            "4": "",
             "5": "",
             "urgent": "",
-            "active": "",
+            //"active": "",
             "default": ""
+        },
+        "persistent_workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
+            "5": []
         }
     },
     "hyprland/window": {
-        "format": "{}"
+        "format": "{}",
+        "max-length": 50
     },
     "tray": {
         "icon-size": 24,
@@ -140,6 +148,8 @@
             "activated": "",
             "deactivated": ""
         },
-        "timeout": "20"
+        "timeout": "20",
+        "tooltip-format-activated": "Idle Inhibitor: Active",
+        "tooltip-format-deactivated": "Idle Inhibitor: Inactive"
     },
 }]
