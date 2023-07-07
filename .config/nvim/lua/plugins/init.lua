@@ -1,8 +1,0 @@
-require('plugins/theme')
-require('plugins/main')
-require('plugins/lualine')
-require('plugins/bufferline')
-require('plugins/git')
-require('plugins/neotree')
-require('plugins/indentlines')
-require('plugins/chatgpt')

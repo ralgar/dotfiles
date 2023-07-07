@@ -1,19 +1,8 @@
-use 'hrsh7th/nvim-cmp' -- Autocompletion plugin
-use 'hrsh7th/cmp-nvim-lsp' -- LSP source for nvim-cmp
-use 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp
-use 'L3MON4D3/LuaSnip' -- Snippets plugin
-user.flush()
-
--- Add additional capabilities supported by nvim-cmp
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
-local lspconfig = require('lspconfig')
-
 -- luasnip setup
-local luasnip = require 'luasnip'
+local luasnip = require('luasnip')
 
 -- nvim-cmp setup
-local cmp = require 'cmp'
+local cmp = require('cmp')
 cmp.setup {
   snippet = {
     expand = function(args)
