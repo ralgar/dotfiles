@@ -1,6 +1,6 @@
 return {
   {
-    'neovim/nvim-lspconfig'
+    'neovim/nvim-lspconfig',
   },
   {
     -- Autocompletion plugin
@@ -45,7 +45,12 @@ return {
         -- and will be called for each installed server that doesn't have
         -- a dedicated handler.
         function (server_name) -- default handler (optional)
-          require("lspconfig")[server_name].setup {}
+          require("lspconfig")[server_name].setup {
+            on_attach = function(client, bufnr)
+              -- Disable LSP syntax highlight (we use TreeSitter)
+              client.server_capabilities.semanticTokensProvider = nil
+            end
+          }
         end,
         -- Next, you can provide a dedicated handler for specific servers.
         -- For example, a handler override for the `rust_analyzer`:

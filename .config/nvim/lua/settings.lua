@@ -10,7 +10,7 @@ set.encoding = 'UTF-8'
 vim.cmd('filetype plugin indent on')
 
 -- Syntax and Line Numbers
-vim.cmd('syntax enable')
+vim.cmd('syntax on')
 set.number = true
 set.cursorline = true
 set.cursorlineopt = 'number'
