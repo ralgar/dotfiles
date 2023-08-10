@@ -4,10 +4,21 @@ source "$(dirname "${BASH_SOURCE[0]}")/lib/interactive"
 
 
 function assert_ansible {
+
     if ! which ansible ; then
-        if ! sudo pacman -S --needed --noconfirm ansible ; then
-            return 1
-        fi
+        source /etc/os-release
+        case $ID in
+            arch)
+                if ! sudo pacman -S --needed --noconfirm ansible ; then
+                    return 1
+                fi
+                ;;
+            fedora)
+                if ! sudo dnf install -y ansible ; then
+                    return 1
+                fi
+                ;;
+        esac
     fi
 }
 
@@ -42,4 +53,6 @@ run assert_ansible
 desc="Running bootstrap playbook"
 run run_playbook playbook.yml
 
-printf "\nFinished! Log out and in again to replace the current environment.\n"
+# Everything went well
+# NOTE: We don't print a final newline here because YADM does it for us
+printf "\nFinished! Log out and in again to replace the current environment."

@@ -1,0 +1,10 @@
+---
+- name: Ensure packages are installed
+  community.general.pacman:
+    name:
+      - zsh
+      - zsh-autosuggestions
+      - zsh-syntax-highlighting
+      - zsh-theme-powerlevel10k
+    state: present
+  become: false

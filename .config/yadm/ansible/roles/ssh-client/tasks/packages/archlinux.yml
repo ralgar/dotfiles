@@ -1,0 +1,6 @@
+---
+- name: Ensure openssh package is installed
+  community.general.pacman:
+    name: openssh
+    state: present
+  become: false

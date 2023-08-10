@@ -1,0 +1,11 @@
+---
+- name: Install repo packages
+  community.general.pacman:
+    name:
+      - alacritty
+      - hyprland
+      - hyprpaper
+      - mpd
+      - waybar
+      - wofi
+  become: false

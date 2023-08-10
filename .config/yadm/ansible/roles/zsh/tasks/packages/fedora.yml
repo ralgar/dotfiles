@@ -1,0 +1,9 @@
+---
+- name: Ensure packages are installed
+  ansible.builtin.dnf:
+    name:
+      - zsh
+      - zsh-autosuggestions
+      - zsh-syntax-highlighting
+    state: present
+  become: false

@@ -1,0 +1,8 @@
+---
+- name: Install packages
+  ansible.builtin.dnf:
+    name:
+      - openssh
+      - openssh-clients
+    state: present
+  become: false

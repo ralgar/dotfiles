@@ -1,0 +1,9 @@
+---
+- name: Install packages
+  ansible.builtin.dnf:
+    name:
+      - alacritty
+      - mpd
+      - waybar
+      - wofi
+  become: false
