@@ -1,0 +1,8 @@
+---
+- name: Install packages
+  community.general.pacman:
+    name:
+      - mangohud
+      - steam
+      - vulkan-tools
+  become: false

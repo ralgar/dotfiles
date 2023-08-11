@@ -23,8 +23,8 @@ function assert_ansible {
 }
 
 function elevate_privilege {
-    echo -e "\n${bld}${yel}WARNING: This script requires root privileges.${off}"
-    yes_cmd="echo ; sudo -E \"${BASH_SOURCE[0]}\""
+    echo -e "${bld}${yel}WARNING: This script requires root privileges.${off}"
+    yes_cmd="sudo -E \"${BASH_SOURCE[0]}\""
     no_cmd="false"
     yesorno "Do you want to invoke sudo?" || return 1
 }
@@ -42,6 +42,7 @@ function run_playbook {
     fi
 }
 
+echo
 if [[ $EUID != 0 ]] ; then
     elevate_privilege || exit 1
     exit 0
