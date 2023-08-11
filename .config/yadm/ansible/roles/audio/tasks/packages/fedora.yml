@@ -1,0 +1,10 @@
+---
+- name: Install packages
+  ansible.builtin.dnf:
+    name:
+      - pipewire
+      - pipewire-alsa
+      - pipewire-jack-audio-connection-kit
+      - pipewire-pulseaudio
+      - wireplumber
+  become: false

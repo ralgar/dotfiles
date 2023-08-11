@@ -8,6 +8,7 @@
     user: "{{ lookup('ansible.builtin.env', 'SUDO_USER') }}"
     home: "{{ lookup('ansible.builtin.env', 'HOME') }}"
   roles:
+    - audio
     - gui
     - neovim
     - ssh-client
