@@ -108,11 +108,11 @@
     "height": 38, // Waybar height (to be removed for auto height)
 
     // Choose the order of the modules
-    "modules-left": ["wlr/workspaces"],
+    "modules-left": ["hyprland/workspaces"],
     "modules-center": ["hyprland/window"],
     "modules-right": ["tray", "idle_inhibitor"],
     // Modules configuration
-    "wlr/workspaces": {
+    "hyprland/workspaces": {
         "format": "{icon}",
         "on-click": "activate",
         "all-outputs": false,
@@ -127,11 +127,7 @@
             "default": ""
         },
         "persistent_workspaces": {
-            "1": [],
-            "2": [],
-            "3": [],
-            "4": [],
-            "5": []
+            "*": 5,
         }
     },
     "hyprland/window": {
