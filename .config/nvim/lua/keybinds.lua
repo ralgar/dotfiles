@@ -5,3 +5,5 @@
 vim.keymap.set('n', '<Tab>',     '<C-w><C-w>', { silent = true })
 vim.keymap.set('n', '<C-Left>',  ':bprev<CR>', { silent = true })
 vim.keymap.set('n', '<C-Right>', ':bnext<CR>', { silent = true })
+
+vim.keymap.set('n', '<S-Tab>', ':NeoTreeShow<CR>', { silent = true })
