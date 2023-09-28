@@ -44,6 +44,9 @@ set.clipboard = ''
 ---   UI / UX
 -------------------
 
+-- Faster update time (default is 4000ms, which is awful)
+set.updatetime = 250
+
 -- Line wrap with arrow keys
 set.whichwrap = '<,>'
 

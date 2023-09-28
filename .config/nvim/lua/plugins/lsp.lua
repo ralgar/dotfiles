@@ -84,5 +84,17 @@ return {
       -- or leave it empty to use the default settings
       -- refer to the configuration section below
     },
+  },
+  {
+    "simrat39/symbols-outline.nvim",
+    dependencies = {},
+    config = function()
+      require("symbols-outline").setup({
+        symbols = {
+          Function = { icon = "󰊕", hl = "@function" },
+          Method   = { icon = "󰊕", hl = "@method" },
+        },
+      })
+    end,
   }
 }
