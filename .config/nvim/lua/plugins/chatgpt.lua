@@ -6,7 +6,7 @@ return {
       'nui.nvim',
       'nvim-telescope/telescope.nvim'
     },
-    branch = "v0.1.1-alpha",
+    commit = "b50fdaf",
     config = function()
       require("chatgpt").setup({
         -- Additional config goes here
