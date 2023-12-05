@@ -1,6 +1,7 @@
 [{
     "layer": "top", // Waybar at top layer
     "position": "top", // Waybar position (top|bottom|left|right)
+    "output": "DP-1",
     "height": 32, // Waybar height (to be removed for auto height)
 
     // Choose the order of the modules
@@ -106,7 +107,7 @@
     "layer": "top", // Waybar at top layer
     "position": "bottom", // Waybar position (top|bottom|left|right)
     "height": 38, // Waybar height (to be removed for auto height)
-
+    "output": "DP-1",
     // Choose the order of the modules
     "modules-left": ["hyprland/workspaces"],
     "modules-center": ["hyprland/window"],
@@ -126,8 +127,8 @@
             //"active": "",
             "default": ""
         },
-        "persistent_workspaces": {
-            "*": 5,
+        "persistent-workspaces": {
+            "*": [1, 2, 3, 4, 5],
         }
     },
     "hyprland/window": {
