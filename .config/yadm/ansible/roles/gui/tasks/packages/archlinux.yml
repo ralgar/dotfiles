@@ -6,6 +6,10 @@
       - hyprland
       - hyprpaper
       - mpd
+      - swayidle
       - waybar
+      - waylock
       - wofi
+      - xdg-desktop-portal-gtk
+      - xdg-desktop-portal-hyprland
   become: false
