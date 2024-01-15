@@ -23,12 +23,15 @@ export SSH_ASKPASS="$HOME/.ssh/get-pass.sh"
 export SSH_ASKPASS_REQUIRE="force"
 export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR:-/run/user/$(id -u)}/ssh-agent.socket"
 
+# GPG Configuration
+export GPG_TTY=$(tty)
+export GNUPGHOME="${XDG_CONFIG_HOME}/gnupg"
+
 # Gaming / 3D Graphics
 export MANGOHUD=1
 
 # Path Mapping
 export LESSHISTFILE=-
-export GNUPGHOME="${XDG_CONFIG_HOME}/gnupg"
 export CHROOT="${HOME}/Projects/chroot"
 export GTK2_RC_FILES="${XDG_CONFIG_HOME}/gtk-2.0/gtkrc"
 
