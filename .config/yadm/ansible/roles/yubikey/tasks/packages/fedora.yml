@@ -1,0 +1,8 @@
+---
+- name: Ensure packages are installed
+  ansible.builtin.dnf:
+    name:
+      - libfido2
+      - yubikey-manager
+    state: present
+  become: false

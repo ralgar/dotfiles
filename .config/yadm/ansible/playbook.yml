@@ -12,4 +12,5 @@
     - gui
     - neovim
     - ssh-client
+    - yubikey
     - zsh
