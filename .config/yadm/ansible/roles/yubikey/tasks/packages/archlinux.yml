@@ -4,5 +4,6 @@
     name:
       - libfido2
       - yubikey-manager
+      - yubikey-touch-detector
     state: present
   become: false
