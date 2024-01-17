@@ -44,3 +44,6 @@ export LESS_TERMCAP_so=$'\E[01;44;33m' # begin reverse video
 export LESS_TERMCAP_se=$'\E[0m'        # reset reverse video
 export LESS_TERMCAP_us=$'\E[1;32m'     # begin underline
 export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
+
+# Highlight "[sudo]" text when prompting for password
+export SUDO_PROMPT="$(tput setaf 1 bold)[sudo]$(tput sgr0) password for %p: "
