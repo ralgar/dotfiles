@@ -1,3 +1,0 @@
-[submodule ".config/dwl"]
-	path = .config/dwl
-	url = https://github.com/ralgar/dwl.git
