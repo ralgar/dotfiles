@@ -1,12 +1,15 @@
 ---
 session_name: homelab
+start_directory: ~/Projects/homelab
+environment:
+  KUBECONFIG: ${HOME}/Projects/homelab/output/kube_config
+  GOOGLE_CREDENTIALS: ${HOME}/.secret/google_credentials.json
+  OS_CLOUDS: ${HOME}/Projects/homelab/output/clouds.yaml
+  OS_CLOUD: kolla-admin
 windows:
   - window_name: vim
-    start_directory: ~/Projects/provisioning/homelab
     shell_command:
-      - clear
       - vim
   - window_name: build
-    start_directory: ~/Projects/provisioning/homelab
   - window_name: ssh
   - window_name: other

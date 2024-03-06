@@ -1,0 +1,7 @@
+---
+session_name: generic
+windows:
+  - window_name: vim
+  - window_name: build
+  - window_name: ssh
+  - window_name: other
