@@ -3,6 +3,7 @@
   community.general.pacman:
     name:
       - alacritty
+      - gammastep
       - hyprland
       - hyprpaper
       - mpd

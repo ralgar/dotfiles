@@ -2,6 +2,7 @@
 - name: Install packages
   community.general.pacman:
     name:
+      - gamemode
       - mangohud
       - steam
       - vulkan-tools
