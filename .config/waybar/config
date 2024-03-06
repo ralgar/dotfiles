@@ -111,7 +111,7 @@
     // Choose the order of the modules
     "modules-left": ["hyprland/workspaces"],
     "modules-center": ["hyprland/window"],
-    "modules-right": ["tray", "idle_inhibitor"],
+    "modules-right": ["tray", "custom/check_updates", "idle_inhibitor"],
     // Modules configuration
     "hyprland/workspaces": {
         "format": "{icon}",
@@ -138,6 +138,13 @@
     "tray": {
         "icon-size": 24,
         "spacing": 10
+    },
+    "custom/check_updates": {
+        "exec": "~/.config/waybar/scripts/check_updates.sh",
+        "return-type": "json",
+        "exec-if": "~/.config/waybar/scripts/check_gamemode.sh",
+        "interval": 3600,
+        "format": "󰏔 {}",
     },
     "idle_inhibitor": {
         "format": "{icon}",
