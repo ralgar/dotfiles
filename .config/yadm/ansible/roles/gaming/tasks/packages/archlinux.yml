@@ -1,5 +1,5 @@
 ---
-- name: Install packages
+- name: Install repo packages
   community.general.pacman:
     name:
       - gamemode
@@ -7,3 +7,11 @@
       - steam
       - vulkan-tools
   become: false
+
+- name: Install AUR packages
+  community.general.pacman:
+    name:
+      - gpu-screen-recorder-git
+    executable: paru
+  become: true
+  become_user: "{{ user }}"
