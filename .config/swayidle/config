@@ -1,7 +1,0 @@
-# Lock session and turn display off after 5 minutes of inactivity
-# NOTE: Do not launch swayidle with '-w' switch, or this will behave poorly
-timeout 300 "hyprctl dispatch dpms off" resume "hyprctl dispatch dpms on"
-timeout 360 "waylock"
-
-# Lock session before the system goes to sleep
-before-sleep "waylock"

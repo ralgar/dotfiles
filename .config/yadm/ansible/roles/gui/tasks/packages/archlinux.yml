@@ -4,13 +4,13 @@
     name:
       - alacritty
       - gammastep
+      - hypridle
       - hyprland
+      - hyprlock
       - hyprpaper
       - mpd
       - pacman-contrib
-      - swayidle
       - waybar
-      - waylock
       - wofi
       - xdg-desktop-portal-gtk
       - xdg-desktop-portal-hyprland
