@@ -14,7 +14,7 @@ These dotfiles are aimed at power users, with a strong focus on working in the t
 - Highly customized CLI shell, with informative prompt and completions.
 - Highly customized text editor (Neovim), which strives to be IDE-like.
 - Cohesive look and feel. All elements use the same or similar color scheme.
-- Configurations for both Wayland, and X11 (deprecated).
+- Exclusively uses the modern Wayland display server.
 - Cleans up many of the scattered dotfiles in `$HOME`.
 
 This repository is managed by [YADM (Yet Another Dotfiles Manager)](https://yadm.io),
@@ -54,12 +54,3 @@ This repository is managed by [YADM (Yet Another Dotfiles Manager)](https://yadm
 
 Distributed under the GNU GPL-2.0 License. See `.github/LICENSE`, or the
  sidebar, for more info.
-
-## Acknowledgements
-
-Thanks to these amazing projects, which are used in these dotfiles:
-
-* [Powerlevel10k](https://github.com/romkatv/powerlevel10k) - The incredible
-  Zsh prompt.
-* [Lain](https://github.com/lcpz/lain) - The code from which I hacked up the
-  AwesomeWM widgets.

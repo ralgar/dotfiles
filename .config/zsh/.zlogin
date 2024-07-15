@@ -1,5 +1,5 @@
 # Workaround for GTK themes not applying
-import-gsettings() {
+import_gsettings() {
     config="${XDG_CONFIG_HOME:-$HOME/.config}/gtk-3.0/settings.ini"
     [[ -f "$config" ]] || {
         printf "WARN: Could not find GTK3 config to load!\n"
@@ -17,25 +17,8 @@ import-gsettings() {
     gsettings set "$gnome_schema" font-name "$font_name"
 }
 
-if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
-    echo
-    PS3="Choose a session: "
-    select choice in Xorg Wayland Console ; do
-        case $choice in
-            "Xorg")
-                exec startx ;;
-            "Wayland")
-                export MOZ_ENABLE_WAYLAND=1
-                # Workaround for Nvidia disappearing cursor
-                if lsmod | grep nvidia &> /dev/null ; then
-                    export WLR_NO_HARDWARE_CURSORS=1
-                fi
-                import-gsettings
-                exec Hyprland ;;
-            "Console")
-                break ;;
-            *)
-                printf "\nInvalid choice. Try again.\n" ;;
-        esac
-    done
+# Start graphical environment on TTY1 only, otherwise drop into console.
+if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ] ; then
+    import_gsettings
+    exec Hyprland 2>&1 > /dev/null
 fi
