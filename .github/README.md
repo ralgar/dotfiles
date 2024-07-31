@@ -52,5 +52,8 @@ This repository is managed by [YADM (Yet Another Dotfiles Manager)](https://yadm
 
 ## License
 
-Distributed under the GNU GPL-2.0 License. See `.github/LICENSE`, or the
- sidebar, for more info.
+Copyright (c) 2024, Ryan Algar
+ ([ralgar/dotfiles](https://github.com/ralgar/dotfiles))
+
+BSD 2-clause License (see [LICENSE](LICENSE) or
+ [BSD 2-clause](https://choosealicense.com/licenses/bsd-2-clause/))
