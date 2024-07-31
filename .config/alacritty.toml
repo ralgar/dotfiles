@@ -1,0 +1,39 @@
+[colors]
+draw_bold_text_with_bright_colors = true
+
+[colors.cursor]
+cursor = "0xabb2bf"
+text = "0x5c6370"
+
+[colors.normal]
+black = "0x5c6370"
+blue = "0x61afef"
+cyan = "0x56b6c2"
+green = "0x98c379"
+magenta = "0xc678dd"
+red = "0xe06c75"
+white = "0xabb2bf"
+yellow = "0xe5c07b"
+
+[colors.primary]
+background = "0x1e2127"
+foreground = "0xabb2bf"
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+size = 12.0
+
+[font.normal]
+family = "MesloLGS NF"
+style = "Regular"
+
+[window]
+dynamic_padding = true
+dynamic_title = true
+opacity = 1.0
+
+[window.padding]
+x = 5
+y = 5
