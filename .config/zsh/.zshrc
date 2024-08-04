@@ -52,6 +52,7 @@ setopt hist_ignore_space
 . /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 . /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-# Source OpenAI API key
-OPENAI_API_KEY="$XDG_CONFIG_HOME/openai/config"
-[[ -f "$OPENAI_API_KEY" ]] && source "$OPENAI_API_KEY"
+# Set OpenAI API key
+if [[ -f "$XDG_CONFIG_HOME/openai/config" ]] ; then
+    export OPENAI_API_KEY="$(<$XDG_CONFIG_HOME/openai/config)"
+fi
