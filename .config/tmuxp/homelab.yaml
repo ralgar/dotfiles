@@ -4,12 +4,10 @@ start_directory: ~/Projects/homelab
 environment:
   KUBECONFIG: ${HOME}/Projects/homelab/output/kube_config
   GOOGLE_CREDENTIALS: ${HOME}/.secret/google_credentials.json
-  OS_CLOUDS: ${HOME}/Projects/homelab/output/clouds.yaml
-  OS_CLOUD: kolla-admin
 windows:
   - window_name: vim
     shell_command:
-      - vim
+      - nvim
   - window_name: build
   - window_name: ssh
   - window_name: other
