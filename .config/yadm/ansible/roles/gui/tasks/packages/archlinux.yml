@@ -8,9 +8,13 @@
       - hyprland
       - hyprlock
       - hyprpaper
+      - jq
+      - libnotify
+      - mako
       - mpd
       - pacman-contrib
       - waybar
+      - wl-clipboard
       - wofi
       - xdg-desktop-portal-gtk
       - xdg-desktop-portal-hyprland
