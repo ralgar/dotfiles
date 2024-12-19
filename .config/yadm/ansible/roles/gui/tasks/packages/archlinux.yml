@@ -4,6 +4,7 @@
     name:
       - alacritty
       - gammastep
+      - grim
       - hypridle
       - hyprland
       - hyprlock
@@ -13,6 +14,7 @@
       - mako
       - mpd
       - pacman-contrib
+      - slurp
       - waybar
       - wl-clipboard
       - wofi
