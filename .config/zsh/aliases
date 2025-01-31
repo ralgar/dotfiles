@@ -15,9 +15,6 @@ alias vim='nvim'
 alias mv='mv --strip-trailing-slashes'
 alias cp='cp --strip-trailing-slashes'
 
-# dd
-alias dd='dd bs=1M status=progress'
-
 # Color output
 alias ls='ls --color -Fv --group-directories-first'
 alias la='ls -lah'
