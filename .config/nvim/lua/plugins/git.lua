@@ -14,7 +14,6 @@ return {
           changedelete = { text = '~' },
           untracked    = { text = '┆' },
         },
-        yadm = { enable = true },
       })
     end
   }

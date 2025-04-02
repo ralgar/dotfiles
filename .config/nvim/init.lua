@@ -14,11 +14,16 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup("plugins")
+-- Docs: https://lazy.folke.io/
+require("lazy").setup({
+  spec = { import = "plugins" },  -- Import all files in "plugins" directory
+  checker = { enabled = true }    -- Automatically check for updates
+})
 
 ----------------------------
 ---    INCLUDE MODULES
 ----------------------------
+require('diagnostics')
 require('keybinds')
 require('settings')
 require('lsp')

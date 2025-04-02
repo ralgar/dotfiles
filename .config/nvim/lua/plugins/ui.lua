@@ -81,11 +81,18 @@ return {
   },
   {
     'lukas-reineke/indent-blankline.nvim',
+    version = "^3.0.0",
     config = function()
-      vim.g.indentLine_char = '¦'
-      vim.g.indentLine_color_term = 178
       vim.g.indent_blankline_show_first_indent_level = false
-      require("indent_blankline").setup {}
+      require("ibl").setup({
+        indent = { char = '¦' },
+        scope = { show_start = false, show_end = false }
+      })
+      local hooks = require("ibl.hooks")
+      hooks.register(
+        hooks.type.WHITESPACE,
+        hooks.builtin.hide_first_space_indent_level
+      )
     end
   },
   {
