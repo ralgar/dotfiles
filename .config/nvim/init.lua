@@ -16,8 +16,7 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Docs: https://lazy.folke.io/
 require("lazy").setup({
-  spec = { import = "plugins" },  -- Import all files in "plugins" directory
-  checker = { enabled = true }    -- Automatically check for updates
+  spec = { import = "plugins" }  -- Import all files in "plugins" directory
 })
 
 ----------------------------
