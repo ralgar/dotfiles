@@ -1,3 +1,17 @@
+@define-color main-bg      #121417;
+@define-color highlight-bg #1E2127;
+
+/* Text Colors */
+@define-color white   #ABB2BF;
+@define-color black   #5C6370;
+@define-color blue    #61AFEF;
+@define-color cyan    #56B6C2;
+@define-color green   #98C379;
+@define-color magenta #C678DD;
+@define-color red     #E06C75;
+@define-color yellow  #E5C07B;
+
+
 * {
     border: none;
     border-radius: 0;
@@ -13,10 +27,17 @@ label {
     all: unset;
 }
 
+tooltip {
+    border-radius: 9px;
+}
+
+#waybar {
+}
+
 window#waybar {
-    background: #121417;
+    background: @main-bg;
     /*border-bottom: 3px solid rgba(100, 114, 125, 0.5);*/
-    color: #ABB2BF;
+    color: @white;
     transition-property: background-color;
     transition-duration: .5s;
 }
@@ -25,47 +46,29 @@ window#waybar.hidden {
     opacity: 0.2;
 }
 
-/*
-window#waybar.empty {
-    background-color: transparent;
-}
-window#waybar.solo {
-    background-color: #FFFFFF;
-}
-*/
-
-window#waybar.termite {
-    background-color: #3F3F3F;
-}
-
-window#waybar.chromium {
-    background-color: #000000;
-    border: none;
-}
-
 #workspaces button {
     padding: 0 5px;
     min-width: 32px;
     font-size: 24px;
-    color: #5C6370;
+    color: @black;
     /* Use box-shadow instead of border so the text isn't offset */
     box-shadow: inset 0 -3px transparent;
 }
 
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 #workspaces button:hover {
-    color: #5C6370;
+    color: @black;
     background: rgba(12, 14, 17, 1);
 }
 
 #workspaces button.active {
-    color: #ABB2BF;
-    background-color: #1E2127;
-    box-shadow: inset 0 -3px #ABB2BF;
+    color: @white;
+    background-color: @highlight-bg;
+    box-shadow: inset 0 -3px @white;
 }
 
 #workspaces button.urgent {
-    background-color: #eb4d4b;
+    background-color: @red;
 }
 
 /* Hyprland Active Window module */
@@ -96,22 +99,12 @@ window#waybar.chromium {
     color: #ffffff;
 }
 
-/* If workspaces is the leftmost module, omit left margin */
-/*.modules-left > widget:first-child > #workspaces {
-    margin-left: 0;
-}*/
-
-/* If workspaces is the rightmost module, omit right margin */
-/*.modules-right > widget:last-child > #workspaces {
-    margin-right: 0;
-}*/
-
 #clock {
-    color: #abb2bf;
+    color: @white;
 }
 
 #battery {
-    color: #56b6c2;
+    color: @cyan;
 }
 
 /*#battery.charging, #battery.plugged {
@@ -127,7 +120,7 @@ window#waybar.chromium {
 }
 
 #battery.critical:not(.charging) {
-    background-color: #f53c3c;
+    background-color: @red;
     color: #ffffff;
     animation-name: blink;
     animation-duration: 0.5s;
@@ -141,11 +134,11 @@ label:focus {
 }
 
 #cpu {
-    color: #e06c75;
+    color: @red;
 }
 
 #memory {
-    color: #e5c07b;
+    color: @yellow;
 }
 
 #disk {
@@ -157,26 +150,26 @@ label:focus {
 }
 
 #network {
-    color: #98c379;
+    color: @green;
 }
 
 #network.disconnected {
 }
 
 #pulseaudio {
-    color: #61afef;
+    color: @blue;
 }
 
 #pulseaudio.muted {
-    color: #61afef;
+    color: @blue;
 }
 
 #temperature {
-    color: #c678dd
+    color: @magenta
 }
 
 #temperature.critical {
-    background-color: #eb4d4b;
+    background-color: @red;
 }
 
 /* System Tray module */
@@ -189,22 +182,22 @@ label:focus {
 
 #tray > .needs-attention {
     -gtk-icon-effect: highlight;
-    background-color: #eb4d4b;
+    background-color: @red;
 }
 
 #idle_inhibitor {
-    color: #5C6370;
+    color: @black;
     font-size: 24px;
 }
 
 #idle_inhibitor.activated {
-    background-color: #1E2127;
-    color: #ABB2BF;
+    background-color: @highlight-bg;
+    color: @white;
 }
 
 /* MPD module */
 #mpd {
-    color: #e06c75;
+    color: @red;
 }
 
 #mpd.disconnected {
