@@ -11,6 +11,10 @@ return {
     'hrsh7th/cmp-nvim-lsp'
   },
   {
+    -- Path source for nvim-cmp
+    'hrsh7th/cmp-path'
+  },
+  {
     -- Snippets source for nvim-cmp
     'saadparwaiz1/cmp_luasnip'
   },
