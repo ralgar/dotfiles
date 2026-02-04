@@ -3,6 +3,7 @@
     "position": "top", // Waybar position (top|bottom|left|right)
     "output": ["DP-1", "HDMI-A-1"],
     "height": 32, // Waybar height (to be removed for auto height)
+    "reload_style_on_change": true,
 
     // Choose the order of the modules
     "modules-left": ["mpd"],
@@ -39,7 +40,20 @@
     "clock": {
         // "timezone": "America/New_York",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%Y-%m-%d}"
+        "format-alt": "{:%Y-%m-%d}",
+        "calendar": {
+            "mode"          : "year",
+            "mode-mon-col"  : 3,
+            "weeks-pos"     : "right",
+            "on-scroll"     : 1,
+            "format": {
+                "months":     "<span color='#ffead3'><b>{}</b></span>",
+                "days":       "<span color='#ecc6d9'><b>{}</b></span>",
+                "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+                "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+                "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+            }
+        },
     },
     "cpu": {
         "format": " {usage}%",
@@ -50,8 +64,8 @@
         "format": " {}%",
     },
     "temperature": {
-        // "thermal-zone": 0,
-        "hwmon-path": "/sys/class/hwmon/hwmon1/temp4_input",
+        "hwmon-path-abs": "/sys/devices/pci0000:00/0000:00:18.3/hwmon",
+        "input-filename": "temp4_input",
         "critical-threshold": 80,
         // "format-critical": "{icon} {temperatureC}°C",
         "format": "{icon} {temperatureC}°C",
@@ -112,6 +126,7 @@
     "modules-left": ["hyprland/workspaces"],
     "modules-center": ["hyprland/window"],
     "modules-right": ["tray", "custom/check_updates", "idle_inhibitor"],
+    "reload_style_on_change": true,
     // Modules configuration
     "hyprland/workspaces": {
         "format": "{icon}",
