@@ -4,6 +4,9 @@ return {
   },
   {
     'lewis6991/gitsigns.nvim',
+    dependencies = {
+      'purarue/gitsigns-yadm.nvim',
+    },
     config = function()
       require('gitsigns').setup({
         signs = {
@@ -14,6 +17,13 @@ return {
           changedelete = { text = '~' },
           untracked    = { text = '┆' },
         },
+        _on_attach_pre = function(bufnr, callback)
+          if vim.fn.executable('yadm') == 1 then
+            require('gitsigns-yadm').yadm_signs(callback, { bufnr = bufnr })
+          else
+            callback()
+          end
+        end,
       })
     end
   }

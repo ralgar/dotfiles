@@ -85,8 +85,14 @@ return {
     config = function()
       vim.g.indent_blankline_show_first_indent_level = false
       require("ibl").setup({
-        indent = { char = '¦' },
-        scope = { show_start = false, show_end = false }
+        indent = {
+          char = '¦',
+        },
+        scope = {
+          show_start = false,
+          show_end = false,
+          highlight = { "Comment" },
+        }
       })
       local hooks = require("ibl.hooks")
       hooks.register(
