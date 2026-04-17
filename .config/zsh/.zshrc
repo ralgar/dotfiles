@@ -11,21 +11,35 @@
 #. "$ZDOTDIR/plugins/zinit/zinit.zsh"
 
 # Load P10K Theme, and P10K Instant Prompt
-source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+if [[ -f /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme ]] ; then
+    source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+fi
+
 [[ ! -f $ZDOTDIR/.p10k.zsh ]] || source $ZDOTDIR/.p10k.zsh
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+
+if [[ -f "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+    source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
 # Create zsh cache dir for history / completions
 if [[ ! -d "${XDG_CACHE_HOME:-$HOME/.cache}/zsh" ]] ; then
-  mkdir -p "${XDG_CACHE_HOME:-$HOME/.cache}/zsh"
+    mkdir -p "${XDG_CACHE_HOME:-$HOME/.cache}/zsh"
 fi
 
 # Load completions and zinit
 zstyle :compinstall filename "$ZDOTDIR/.zshrc"
 autoload -Uz compinit
 compinit -d "${XDG_CACHE_HOME:-$HOME/.cache}/zsh/compdump"
+
+# Load autosuggestions plugin
+if [[ -f /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh ]] ; then
+    source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+fi
+
+# Load syntax highlighting plugin
+if [[ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] ; then
+    source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi
 
 ####################
 ###   SETTINGS   ###
@@ -49,8 +63,6 @@ setopt hist_ignore_space
 . "$ZDOTDIR/command-not-found.zsh"
 . "$ZDOTDIR/cd-ls.zsh"
 . "$ZDOTDIR/trap-rehash.zsh"
-. /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-. /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Set OpenAI API key
 if [[ -f "$XDG_CONFIG_HOME/openai/config" ]] ; then
