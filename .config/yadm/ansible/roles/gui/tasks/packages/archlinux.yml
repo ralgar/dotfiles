@@ -15,6 +15,7 @@
       - mpd
       - pacman-contrib
       - slurp
+      - uwsm
       - waybar
       - wl-clipboard
       - wofi
