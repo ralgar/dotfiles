@@ -4,26 +4,12 @@ return {
   },
   {
     -- Autocompletion plugin
-    'hrsh7th/nvim-cmp'
+    'saghen/blink.cmp',
+    version = '1.*',
+    opts_extend = { "sources.default" },
   },
   {
-    -- LSP source for nvim-cmp
-    'hrsh7th/cmp-nvim-lsp'
-  },
-  {
-    -- Path source for nvim-cmp
-    'hrsh7th/cmp-path'
-  },
-  {
-    -- Snippets source for nvim-cmp
-    'saadparwaiz1/cmp_luasnip'
-  },
-  {
-    -- Snippets plugin
-    'L3MON4D3/LuaSnip'
-  },
-  {
-    'williamboman/mason.nvim',
+    'mason-org/mason.nvim',
     config = function()
       require('mason').setup({
         ui = {
@@ -39,7 +25,7 @@ return {
     end
   },
   {
-    'williamboman/mason-lspconfig.nvim',
+    'mason-org/mason-lspconfig.nvim',
     config = function()
       require('mason-lspconfig').setup({
         automatic_enable = true,
@@ -47,7 +33,7 @@ return {
     end
   },
   {
-    'jose-elias-alvarez/null-ls.nvim',
+    'nvimtools/none-ls.nvim',
      config = function()
        require('null-ls').setup()
      end
@@ -72,13 +58,15 @@ return {
     },
   },
   {
-    "simrat39/symbols-outline.nvim",
+    "hedyhli/outline.nvim",
     dependencies = {},
     config = function()
-      require("symbols-outline").setup({
+      require("outline").setup({
         symbols = {
-          Function = { icon = "󰊕", hl = "@function" },
-          Method   = { icon = "󰊕", hl = "@method" },
+          icons = {
+            Function = { icon = "󰊕", hl = "@function" },
+            Method   = { icon = "󰊕", hl = "@method" },
+          },
         },
       })
     end,
