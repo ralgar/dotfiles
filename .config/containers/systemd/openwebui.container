@@ -1,0 +1,28 @@
+[Unit]
+Description=Open WebUI
+Requires=openwebui.volume llama-cpp.container
+
+[Container]
+Image=ghcr.io/open-webui/open-webui:main
+ContainerName=openwebui
+Pod=local-llm.pod
+
+Volume=openwebui.volume:/app/backend/data
+
+Environment=WEBUI_AUTH=False
+Environment=OPENAI_API_BASE_URL=http://localhost:8000/v1
+Environment=OPENAI_API_KEY=none
+Environment=ENABLE_OLLAMA_API=false
+
+[Service]
+Restart=never
+
+# Disable Quadlet's auto-added network-online wait. NetworkManager never
+# reaches "startup complete" on this box (VLAN-only config with the parent
+# left disconnected), so network-online.target stays inactive and the wait
+# spins until it times out, hanging every container start by ~90s.
+[Quadlet]
+DefaultDependencies=false
+
+[Install]
+WantedBy=default.target

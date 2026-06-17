@@ -1,0 +1,18 @@
+[Pod]
+PodName=local-llm
+
+# Llama.cpp
+PublishPort=8000:8000
+
+# OpenWebUI
+PublishPort=8080:8080
+
+# Disable Quadlet's auto-added network-online wait. NetworkManager never
+# reaches "startup complete" on this box (VLAN-only config with the parent
+# left disconnected), so network-online.target stays inactive and the wait
+# spins until it times out, hanging every container start by ~90s.
+[Quadlet]
+DefaultDependencies=false
+
+[Install]
+WantedBy=default.target

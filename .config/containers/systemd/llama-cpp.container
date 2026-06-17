@@ -1,0 +1,32 @@
+[Unit]
+Description=Llama.cpp Server
+Requires=models.volume
+
+[Container]
+Pod=local-llm.pod
+ContainerName=llama-cpp
+Image=ghcr.io/ggml-org/llama.cpp:server-vulkan
+
+Environment=LLAMA_ARG_HOST=0.0.0.0
+Environment=LLAMA_ARG_PORT=8000
+Environment=LLAMA_ARG_MODELS_PRESET=/models/presets.ini
+Environment=LLAMA_ARG_MODELS_MAX=1
+Environment=LLAMA_ARG_NO_UI=1
+
+Volume=models.volume:/models
+
+AddDevice=/dev/kfd
+AddDevice=/dev/dri
+
+[Service]
+Restart=always
+
+# Disable Quadlet's auto-added network-online wait. NetworkManager never
+# reaches "startup complete" on this box (VLAN-only config with the parent
+# left disconnected), so network-online.target stays inactive and the wait
+# spins until it times out, hanging every container start by ~90s.
+[Quadlet]
+DefaultDependencies=false
+
+[Install]
+WantedBy=default.target
