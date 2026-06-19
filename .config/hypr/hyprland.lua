@@ -113,7 +113,7 @@ hl.window_rule({ match = { class = "discord" }, fullscreen = true })
 
 -- General
 hl.bind("SUPER + Return", hl.dsp.exec_cmd("alacritty"))
-hl.bind("SUPER + Q", hl.dsp.window.kill())
+hl.bind("SUPER + Q", hl.dsp.window.close())
 hl.bind("SUPER + SHIFT + Q", hl.dsp.exec_cmd("uwsm stop"))
 hl.bind("SUPER + E", hl.dsp.exec_cmd("wofi"))
 hl.bind("SUPER + V", hl.dsp.window.float())
