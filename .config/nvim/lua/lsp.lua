@@ -17,7 +17,7 @@ require('blink.cmp').setup({
     ['<C-d>'] = { 'scroll_documentation_down', 'fallback' },
   },
   sources = {
-    default = { 'lsp', 'path', 'snippets', 'buffer' },
+    default = { 'lsp', 'path', 'snippets' },
   },
   fuzzy = { implementation = 'prefer_rust_with_warning' },
 })
