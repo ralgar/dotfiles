@@ -1,0 +1,31 @@
+[Unit]
+Description=MCP server for *arr stack
+
+[Container]
+Pod=local-llm.pod
+ContainerName=mcp-arr
+Image=ghcr.io/aplaceforallmystuff/mcp-arr:latest
+
+Environment=MCP_TRANSPORT=http
+Environment=HOST=0.0.0.0
+Environment=PORT=3000
+
+Secret=prowlarr-url,type=env,target=PROWLARR_URL
+Secret=prowlarr-api-key,type=env,target=PROWLARR_API_KEY
+Secret=radarr-url,type=env,target=RADARR_URL
+Secret=radarr-api-key,type=env,target=RADARR_API_KEY
+Secret=sonarr-url,type=env,target=SONARR_URL
+Secret=sonarr-api-key,type=env,target=SONARR_API_KEY
+
+[Service]
+Restart=always
+
+# Disable Quadlet's auto-added network-online wait. NetworkManager never
+# reaches "startup complete" on this box (VLAN-only config with the parent
+# left disconnected), so network-online.target stays inactive and the wait
+# spins until it times out, hanging every container start by ~90s.
+[Quadlet]
+DefaultDependencies=false
+
+[Install]
+WantedBy=default.target
