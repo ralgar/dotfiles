@@ -29,6 +29,7 @@ export GNUPGHOME="${XDG_CONFIG_HOME}/gnupg"
 
 # Gaming / 3D Graphics
 export MANGOHUD=1
+export MESA_SHADER_CACHE_MAX_SIZE=10G
 
 # Path Mapping
 export LESSHISTFILE=-
