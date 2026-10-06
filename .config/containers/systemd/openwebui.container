@@ -3,7 +3,7 @@ Description=Open WebUI
 Requires=openwebui.volume llama-cpp.container
 
 [Container]
-Image=ghcr.io/open-webui/open-webui:main
+Image=ghcr.io/open-webui/open-webui:v0.11.4
 ContainerName=openwebui
 Pod=local-llm.pod
 
