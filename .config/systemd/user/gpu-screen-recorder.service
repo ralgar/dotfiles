@@ -13,7 +13,7 @@ Environment=REPLAYDURATION=60
 Environment=OUTPUTDIR=%h/Videos
 Environment=MAKEFOLDERS=no
 Environment=COLOR_RANGE=limited
-ExecStart=/bin/sh -c 'AUDIO="${AUDIO_DEVICE:-$(pactl get-default-sink).monitor}"; gpu-screen-recorder -v no -w "$(hyprctl monitors -j | jq -r ".[0].name")" -c $CONTAINER -q $QUALITY -k $CODEC -ac $AUDIO_CODEC -a "$AUDIO" -f $FRAMERATE -r $REPLAYDURATION -o "$OUTPUTDIR" -mf $MAKEFOLDERS $ADDITIONAL_ARGS -cr $COLOR_RANGE'
+ExecStart=/bin/sh -c 'AUDIO="${AUDIO_DEVICE:-$(pactl get-default-sink).monitor}"; gpu-screen-recorder -v no -w "$(hyprctl monitors -j | jq -r ".[0].name")" -c $CONTAINER -q $QUALITY -k $CODEC -ac $AUDIO_CODEC -a "$AUDIO" -f $FRAMERATE -r $REPLAYDURATION -o "$OUTPUTDIR" -df $MAKEFOLDERS $ADDITIONAL_ARGS -cr $COLOR_RANGE'
 KillSignal=SIGINT
 Restart=on-failure
 RestartSec=5s
