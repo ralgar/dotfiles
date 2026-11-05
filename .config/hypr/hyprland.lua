@@ -77,6 +77,7 @@ hl.config({
         follow_mouse = 1            -- Window focus follows mouse
     },
     misc = {
+        enable_anr_dialog = false,
         disable_hyprland_logo = true,
         disable_splash_rendering = true
     },
